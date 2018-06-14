@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'header-lmnt',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    @Output() featureSelected = new EventEmitter<string>();
+    selectFeature(feature: string) {
+        //pass feature to app component
+
+        this.featureSelected.emit(feature);
+    } 
 }
