@@ -12,15 +12,13 @@ import { RecipeService } from './recipe.service';
 export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-  }
-
-  displayRecipe(recipe: Recipe) {
-    // set recipe to local property
-    console.log('selected Recipe in recipes component: ', recipe);
-    this.selectedRecipe = recipe;
+    this.recipeService.recipeSelected
+      .subscribe((recipe: Recipe) => {
+        this.selectedRecipe = recipe;
+      });
   }
 
 }
